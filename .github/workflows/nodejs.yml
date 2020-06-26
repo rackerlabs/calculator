@@ -26,5 +26,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm install
     - run: npm run test:unit
+    - run: |
+        npm run i18n:report | tail -n +5 | grep -c vue
+        test $? -eq 1
       env:
         CI: true
