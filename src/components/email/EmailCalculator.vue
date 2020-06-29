@@ -1,5 +1,5 @@
 <template>
-  <div class="email-calculator">
+  <div class="email-calculator" @click="onAppClick">
     <div class="ec-totalBox">
       <span class="ec-totalBox-txt">{{ $t("Estimated Total") }}</span>
       <i18n-n
@@ -18,22 +18,27 @@
         :class="{ 'email-calculator-activeField': rax_qty > 0 }"
       >
         <div class="email-fieldCol-6">
-          <div class="email-calculator-slimField">
-            <label for="rax_qty">{{ $t("Rackspace Email") }}</label>
+          <div class="email-fieldCol-image">
+            <img src="/new-email-icon.svg" alt="Rackspace Email" />
           </div>
-          <div class="email-calculator-slimField">
-            <label class="email-checkbox-container" for="rseplus">
-              <span class="email-checkbox-labelText">{{
-                $t("Email Plus")
-              }}</span>
-              <input
-                class="email-checkbox"
-                id="rseplus"
-                type="checkbox"
-                v-model="rseplus"
-              />
-              <span class="email-checkbox-mark"></span>
-            </label>
+          <div class="email-fieldCol-quantity">
+            <div class="email-calculator-slimField">
+              <label for="rax_qty">{{ $t("Rackspace Email") }}</label>
+            </div>
+            <div class="email-calculator-slimField">
+              <label class="email-checkbox-container" for="rseplus">
+                <span class="email-checkbox-labelText">{{
+                  $t("Email Plus")
+                }}</span>
+                <input
+                  class="email-checkbox"
+                  id="rseplus"
+                  type="checkbox"
+                  v-model="rseplus"
+                />
+                <span class="email-checkbox-mark"></span>
+              </label>
+            </div>
           </div>
         </div>
         <div class="email-fieldCol-6">
@@ -66,7 +71,12 @@
         :class="{ 'email-calculator-activeField': hex_qty > 0 }"
       >
         <div class="email-fieldCol-6">
-          <label for="hex_qty">{{ $t("Hosted Exchange mailboxes") }}</label>
+          <div class="email-fieldCol-image">
+            <img src="/exchange.svg" alt="Hosted Exchange" />
+          </div>
+          <div class="email-fieldCol-quantity">
+            <label for="hex_qty">{{ $t("Hosted Exchange mailboxes") }}</label>
+          </div>
         </div>
         <div class="email-fieldCol-6">
           <div class="email-adjustBox">
@@ -98,7 +108,31 @@
         :class="{ 'email-calculator-activeField': office_qty > 0 }"
       >
         <div class="email-fieldCol-6">
-          <label for="office_qty">{{ $t("Microsoft Office seats") }}</label>
+          <div class="email-fieldCol-image">
+            <img src="/outlook.svg" alt="Microsoft Office" />
+          </div>
+          <div class="email-fieldCol-quantity">
+            <label for="office_qty">{{ $t("Microsoft Office seats") }}</label>
+            <ToolTip>
+              <ul>
+                <li>{{ $t("20% off Microsoft's Price") }}</li>
+                <li>
+                  {{
+                    $t(
+                      "Auto-updating online and desktop versions of Word, Excel, PowerPoint, Outlook"
+                    )
+                  }}
+                </li>
+                <li>
+                  {{
+                    $t(
+                      "1TB of OneDrive file storage - access & share files anywhere"
+                    )
+                  }}
+                </li>
+              </ul>
+            </ToolTip>
+          </div>
         </div>
         <div class="email-fieldCol-6">
           <div class="email-adjustBox">
@@ -161,11 +195,14 @@
 <script>
 import prices from "@/prices/cloud_office.json";
 import CurrencySwitcher from "@/components/CurrencySwitcher.vue";
+import ToolTip from "./tooltip.vue";
+import { clickBus } from "./clickbus.js";
 
 export default {
   name: "EmailCalculator",
   components: {
     CurrencySwitcher,
+    ToolTip,
   },
   data() {
     return {
@@ -237,6 +274,9 @@ export default {
       } else if (op === "add") {
         this[item]++;
       }
+    },
+    onAppClick() {
+      clickBus.$emit("on-app-click");
     },
   },
 };
@@ -315,9 +355,11 @@ export default {
   display: table;
 }
 .email-calculator-field {
+  align-items: center;
   background-color: #ffffff;
   border: 2px solid #c7c7c7;
   border-radius: 10px;
+  display: flex;
   margin-bottom: 20px;
   padding: 20px;
   transition-duration: 0.2s;
@@ -360,6 +402,17 @@ export default {
 .email-fieldCol-6 {
   float: left;
   width: 50%;
+}
+.email-fieldCol-image {
+  float: left;
+  width: 30%;
+}
+.email-fieldCol-image img {
+  max-width: 60%;
+}
+.email-fieldCol-quantity {
+  float: left;
+  width: 70%;
 }
 .email-subBtn {
   background-color: #ffffff;

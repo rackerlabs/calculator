@@ -2,9 +2,14 @@
   <div class="currency-switcher">
     <div
       class="currency-switcher-selected"
-      @click.prevent="showOptions = !showOptions"
+      @click.stop.prevent="showOptions = !showOptions"
     >
       {{ value }}
+      <img
+        class="rs-calc-currencyCaret"
+        src="/down-caret.svg"
+        alt="select currency"
+      />
     </div>
     <div class="currency-switcher-options" v-if="showOptions">
       <div
@@ -22,6 +27,8 @@
 <script>
 import numberFormats from "@/numberFormats.json";
 import { loadLanguage } from "@/i18n";
+import { clickBus } from "./email/clickbus.js";
+
 export default {
   name: "CurrencySwitcher",
   props: {
@@ -35,6 +42,11 @@ export default {
       locales: numberFormats,
       showOptions: false,
     };
+  },
+  created() {
+    clickBus.$on("on-app-click", () => {
+      this.showOptions = false;
+    });
   },
   watch: {
     value(val) {
@@ -87,5 +99,8 @@ export default {
   background-color: #ececec;
   cursor: pointer;
   transition-duration: 0.2s;
+}
+.rs-calc-currencyCaret {
+  width: 10px;
 }
 </style>
