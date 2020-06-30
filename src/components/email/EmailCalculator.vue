@@ -19,7 +19,7 @@
       >
         <div class="email-fieldCol-6">
           <div class="email-fieldCol-image">
-            <img src="/new-email-icon.svg" alt="Rackspace Email" />
+            <img src="@/assets/new-email-icon.svg" alt="Rackspace Email" />
           </div>
           <div class="email-fieldCol-quantity">
             <div class="email-calculator-slimField">
@@ -72,7 +72,7 @@
       >
         <div class="email-fieldCol-6">
           <div class="email-fieldCol-image">
-            <img src="/exchange.svg" alt="Hosted Exchange" />
+            <img src="@/assets/exchange.svg" alt="Hosted Exchange" />
           </div>
           <div class="email-fieldCol-quantity">
             <label for="hex_qty">{{ $t("Hosted Exchange mailboxes") }}</label>
@@ -109,7 +109,7 @@
       >
         <div class="email-fieldCol-6">
           <div class="email-fieldCol-image">
-            <img src="/outlook.svg" alt="Microsoft Office" />
+            <img src="@/assets/outlook.svg" alt="Microsoft Office" />
           </div>
           <div class="email-fieldCol-quantity">
             <label for="office_qty">{{ $t("Microsoft Office seats") }}</label>

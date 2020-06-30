@@ -1,7 +1,7 @@
 <template>
   <div class="rs-calc-tooltipContainer">
     <a class="rs-calc-tooltipLink" href="#" @click.stop.prevent="toggleTooltip">
-      <img src="/info-circle.svg" alt="tooltip information" />
+      <img src="@/assets/info-circle.svg" alt="tooltip information" />
     </a>
     <div @click.stop class="rs-calc-tooltipBox" v-show="showTip">
       <slot></slot>
