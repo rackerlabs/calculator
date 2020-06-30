@@ -7,7 +7,7 @@
       {{ value }}
       <img
         class="rs-calc-currencyCaret"
-        src="/down-caret.svg"
+        src="@/assets/down-caret.svg"
         alt="select currency"
       />
     </div>

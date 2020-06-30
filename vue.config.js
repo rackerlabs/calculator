@@ -1,7 +1,7 @@
 const { singleInstances } = require("vue-cli-plugin-drupal-pdb");
 
 // Set this to the path in Drupal where your pdb_vue 'dist' directory lives.
-const drupalPath = "/modules/rackspace/pdb_vue/dist/";
+const drupalPath = "/themes/custom/rackspace/libraries/calculator/dist";
 
 module.exports = {
   pluginOptions: {
