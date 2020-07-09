@@ -19,13 +19,13 @@
       >
         <div class="email-fieldCol-9">
           <div class="email-fieldCol-image">
-            <img class="envelope" src="@/assets/new-email-icon.svg" alt="Rackspace Email" />
+            <img class="email-fieldCol-image-envelope" src="@/assets/new-email-icon.svg" alt="Rackspace Email" />
           </div>
           <div class="email-fieldCol-quantity">
             <div class="email-calculator-slimField">
               <label for="rax_qty">{{ $t("Rackspace Email") }}</label>
             </div>
-            <div class="email-calculator-slimField email-plus">
+            <div class="email-calculator-slimField email-calculator-slimField-emailPlus">
               <label class="email-checkbox-container" for="rseplus">
                 <span class="email-checkbox-labelText">{{
                   $t("Email Plus")
@@ -74,7 +74,7 @@
           <div class="email-fieldCol-image">
             <img src="@/assets/exchange.svg" alt="Hosted Exchange" />
           </div>
-          <div class="email-fieldCol-quantity no-checkbox">
+          <div class="email-fieldCol-quantity email-fieldCol-quantity-noCheckbox">
             <label for="hex_qty">{{ $t("Hosted Exchange") }}</label>
           </div>
         </div>
@@ -111,7 +111,7 @@
           <div class="email-fieldCol-image">
             <img src="@/assets/outlook.svg" alt="Microsoft Office" />
           </div>
-          <div class="email-fieldCol-quantity no-checkbox">
+          <div class="email-fieldCol-quantity email-fieldCol-quantity-noCheckbox">
             <label for="office_qty">{{ $t("Microsoft Office") }}</label>
             <ToolTip>
               <ul>
@@ -285,7 +285,7 @@ export default {
 <style scoped>
 .email-calculator {
   min-width: 400px;
-  width: 50%; /* this shows as 50% in dev, howver on the website, this is restricted to 25% due to the size of the widget */
+  width: 50%; 
 }
 .ec-totalBox {
   align-items: center;
@@ -365,10 +365,6 @@ export default {
   padding: 10px;
   transition-duration: 0.2s;
 }
-/*
-.email-calculator-field:hover {
-  background-color: #f2f8fd;
-}*/
 .email-calculator-activeField {
   border-color: #0056cb;
   background-color: #f2f8fd;
@@ -402,10 +398,10 @@ export default {
 .email-calculator-slimField:last-child {
   margin-bottom: 0;
 }
-.email-plus {
+.email-calculator-slimField-emailPlus {
   margin-top: 10px;
 }
-.no-checkbox {
+.email-fieldCol-quantity-noCheckbox {
   margin-top: 12px;
 }
 .email-fieldCol-6 {
@@ -429,7 +425,7 @@ export default {
   max-width: 70%;
   margin-top: 5px;
 }
-.email-fieldCol-image img.envelope {
+.email-fieldCol-image .email-fieldCol-image-envelope {
   margin: 10px 0;
 }
 .email-fieldCol-quantity {
