@@ -19,13 +19,19 @@
       >
         <div class="email-fieldCol-9">
           <div class="email-fieldCol-image">
-            <img class="email-fieldCol-image-envelope" src="@/assets/new-email-icon.svg" alt="Rackspace Email" />
+            <img
+              class="email-fieldCol-image-envelope"
+              src="@/assets/new-email-icon.svg"
+              alt="Rackspace Email"
+            />
           </div>
           <div class="email-fieldCol-quantity">
             <div class="email-calculator-slimField">
               <label for="rax_qty">{{ $t("Rackspace Email") }}</label>
             </div>
-            <div class="email-calculator-slimField email-calculator-slimField-emailPlus">
+            <div
+              class="email-calculator-slimField email-calculator-slimField-emailPlus"
+            >
               <label class="email-checkbox-container" for="rseplus">
                 <span class="email-checkbox-labelText">{{
                   $t("Email Plus")
@@ -74,7 +80,9 @@
           <div class="email-fieldCol-image">
             <img src="@/assets/exchange.svg" alt="Hosted Exchange" />
           </div>
-          <div class="email-fieldCol-quantity email-fieldCol-quantity-noCheckbox">
+          <div
+            class="email-fieldCol-quantity email-fieldCol-quantity-noCheckbox"
+          >
             <label for="hex_qty">{{ $t("Hosted Exchange") }}</label>
           </div>
         </div>
@@ -111,7 +119,9 @@
           <div class="email-fieldCol-image">
             <img src="@/assets/outlook.svg" alt="Microsoft Office" />
           </div>
-          <div class="email-fieldCol-quantity email-fieldCol-quantity-noCheckbox">
+          <div
+            class="email-fieldCol-quantity email-fieldCol-quantity-noCheckbox"
+          >
             <label for="office_qty">{{ $t("Microsoft Office") }}</label>
             <ToolTip>
               <ul>
@@ -285,11 +295,11 @@ export default {
 <style scoped>
 .email-calculator {
   min-width: 400px;
-  width: 50%; 
+  width: 50%;
 }
 .ec-totalBox {
   align-items: center;
-  background-color: #0056CB;
+  background-color: #0056cb;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -383,7 +393,7 @@ export default {
   margin-bottom: 0;
 }
 .email-calculator-slimField {
-  margin: 14px 0 4px 0 ;
+  margin: 14px 0 4px 0;
 }
 .email-calculator-slimField:after {
   clear: both;
@@ -419,7 +429,6 @@ export default {
 .email-fieldCol-image {
   float: left;
   width: 20%;
-
 }
 .email-fieldCol-image img {
   max-width: 70%;
