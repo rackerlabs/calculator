@@ -6,31 +6,31 @@ describe("EmailCalculator", () => {
     it("rax_total calculates correct amount for Rackspace Email", () => {
       const localThis = {
         prices: prices,
-        rax_qty: 2,
+        rax_qty: 4,
         currency: "USD",
         rseplus: false,
       };
-      expect(EmailCalculator.computed.rax_total.call(localThis)).toBe(5.98);
+      expect(EmailCalculator.computed.rax_total.call(localThis)).toBe(11.96);
     });
 
     it("rax_total calculates correct amount for Rackspace Email Plus", () => {
       const localThis = {
         prices: prices,
-        rax_qty: 2,
+        rax_qty:3,
         currency: "USD",
         rseplus: true,
       };
-      expect(EmailCalculator.computed.rax_total.call(localThis)).toBe(7.98);
+      expect(EmailCalculator.computed.rax_total.call(localThis)).toBe(11.97);
     });
 
     it("buttonUrl builds the correct URL", () => {
       let localThis = {
         prices: prices,
-        rax_qty: 2,
+        rax_qty: 4,
         currency: "USD",
         rseplus: false,
       };
-      let expected = "/apps/combined/rax:2";
+      let expected = "/apps/combined/rax:4";
       expect(EmailCalculator.computed.buttonUrl.call(localThis)).toBe(expected);
 
       localThis.rax_qty = 3;
@@ -142,11 +142,29 @@ describe("EmailCalculator", () => {
 
   it("total calculates correct amount for all options", () => {
     const localThis = {
+      prices: prices,
+      currency: "USD",
       rax_total: 1,
       hex_total: 2,
       office_total: 3,
       arch_total: 4,
+      minimum_total: 10,
     };
+    expect(EmailCalculator.computed.total.call(localThis)).toBe(10);
+  });
+
+  it("total calculates correct minimum pricing", () => {
+    const localThis = {
+      prices: prices,
+      currency: "USD",
+      rax_total: 0,
+      hex_total: 0,
+      office_total: 0,
+      arch_total: 0,
+      minimum_total: 10,
+    };
+    expect(EmailCalculator.computed.total.call(localThis)).toBe(0);
+    localThis.rax_total = 2.99;
     expect(EmailCalculator.computed.total.call(localThis)).toBe(10);
   });
 
