@@ -248,10 +248,14 @@ export default {
       if (!this.arch) return 0;
       return this.mailbox_qty * this.prices[type][this.currency];
     },
+    minimum_total() {
+      const type = "app_minimum_total";
+      return this.prices[type][this.currency];
+    },
     total() {
-      return (
-        this.rax_total + this.hex_total + this.office_total + this.arch_total
-      );
+      const minimum_total = this.minimum_total;
+      const current_total = this.rax_total + this.hex_total + this.office_total + this.arch_total;
+      return (current_total == 0 || current_total >= minimum_total) ? current_total : minimum_total;
     },
     buttonUrl() {
       let url = "";
