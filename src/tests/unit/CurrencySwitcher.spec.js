@@ -59,4 +59,22 @@ describe("CurrencySwitcher", () => {
     expect(wrapper.text()).toContain("Rackspace Email");
     expect(wrapper.text()).toContain("€4.56");
   });
+
+  it("updateCurrency pushes the correct event into the dataLayer", async () => {
+    const localThis = {
+      $emit() {},
+      showOptions: false
+    }
+    window.dataLayer = [];
+    CurrencySwitcher.methods.updateCurrency.call(localThis, "USD");
+    const expectedEventData = {
+      event: "ga.event",
+      eventCategory: "Rackspace Calculator",
+      eventAction: "Change Currency",
+      eventLabel: "USD",
+      eventValue: 0,
+      eventNonInteraction: 0,
+    };
+    expect(window.dataLayer[0]).toEqual(expectedEventData);
+  });
 });

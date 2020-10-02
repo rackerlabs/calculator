@@ -41,6 +41,7 @@
                   id="rseplus"
                   type="checkbox"
                   v-model="rseplus"
+                  @click="toggleEmailPlus()"
                 />
                 <span class="email-checkbox-mark"></span>
               </label>
@@ -180,6 +181,7 @@
               id="arch"
               type="checkbox"
               v-model="arch"
+              @click="toggleArchiving()"
             />
             <span class="email-checkbox-mark"></span>
           </label>
@@ -190,6 +192,7 @@
           class="email-calculator-nextBtn"
           name="next"
           :href="'https://cart.rackspace.com' + buttonUrl"
+          @click="trackSignupButtonClick(buttonUrl)"
           >{{ $t("Next Step") }}</a
         >
       </div>
@@ -207,6 +210,7 @@ import prices from "@/prices/cloud_office.json";
 import CurrencySwitcher from "@/components/CurrencySwitcher.vue";
 import ToolTip from "./tooltip.vue";
 import { clickBus } from "./clickbus.js";
+import Analytics from "@/components/Analytics.js";
 
 export default {
   name: "EmailCalculator",
@@ -254,12 +258,15 @@ export default {
     },
     total() {
       const minimum_total = this.minimum_total;
-      const current_total = this.rax_total + this.hex_total + this.office_total + this.arch_total;
-      return (current_total == 0 || current_total >= minimum_total) ? current_total : minimum_total;
+      const current_total =
+        this.rax_total + this.hex_total + this.office_total + this.arch_total;
+      return current_total == 0 || current_total >= minimum_total
+        ? current_total
+        : minimum_total;
     },
     buttonUrl() {
       let url = "";
-      // Raclspace Email
+      // Rackpace Email
       if (this.rax_qty) {
         url += "/";
         url += this.rseplus ? "rseplus" : "rax";
@@ -288,6 +295,39 @@ export default {
       } else if (op === "add") {
         this[item]++;
       }
+      const mailboxLabels = {
+        rax_qty: !this.rseplus
+          ? "Rackspace Email Mailbox"
+          : "Rackspace Email Plus Mailbox",
+        hex_qty: "Hosted Exchange Mailbox",
+        office_qty: "Microsoft Office License",
+      };
+      Analytics.trackEvent(
+        "Rackspace Calculator",
+        `Change ${mailboxLabels[item]} Quantity`,
+        op == "add" ? "Add" : "Subtract"
+      );
+    },
+    toggleEmailPlus() {
+      Analytics.trackEvent(
+        "Rackspace Calculator",
+        "Toggle Rackspace Email Plus",
+        this.rseplus ? "Off" : "On"
+      );
+    },
+    toggleArchiving() {
+      Analytics.trackEvent(
+        "Rackspace Calculator",
+        "Toggle Email Archiving",
+        this.arch ? "Off" : "On"
+      );
+    },
+    trackSignupButtonClick(buttonUrl) {
+      Analytics.trackEvent(
+        "Rackspace Calculator",
+        "Click Signup Button",
+        buttonUrl
+      );
     },
     onAppClick() {
       clickBus.$emit("on-app-click");

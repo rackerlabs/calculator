@@ -16,7 +16,7 @@ describe("EmailCalculator", () => {
     it("rax_total calculates correct amount for Rackspace Email Plus", () => {
       const localThis = {
         prices: prices,
-        rax_qty:3,
+        rax_qty: 3,
         currency: "USD",
         rseplus: true,
       };
@@ -24,7 +24,7 @@ describe("EmailCalculator", () => {
     });
 
     it("buttonUrl builds the correct URL", () => {
-      let localThis = {
+      const localThis = {
         prices: prices,
         rax_qty: 4,
         currency: "USD",
@@ -51,12 +51,12 @@ describe("EmailCalculator", () => {
     });
 
     it("buttonUrl builds the correct URL", () => {
-      let localThis = {
+      const localThis = {
         prices: prices,
         hex_qty: 2,
         currency: "USD",
       };
-      let expected = "/apps/combined/hex:2";
+      const expected = "/apps/combined/hex:2";
       expect(EmailCalculator.computed.buttonUrl.call(localThis)).toBe(expected);
     });
   });
@@ -72,12 +72,12 @@ describe("EmailCalculator", () => {
     });
 
     it("buttonUrl builds the correct URL", () => {
-      let localThis = {
+      const localThis = {
         prices: prices,
         office_qty: 2,
         currency: "USD",
       };
-      let expected = "/apps/combined/office:2";
+      const expected = "/apps/combined/office:2";
       expect(EmailCalculator.computed.buttonUrl.call(localThis)).toBe(expected);
     });
   });
@@ -130,12 +130,12 @@ describe("EmailCalculator", () => {
     });
 
     it("buttonUrl builds the correct URL", () => {
-      let localThis = {
+      const localThis = {
         prices: prices,
         arch: true,
         currency: "USD",
       };
-      let expected = "/apps/combined/arch:true";
+      const expected = "/apps/combined/arch:true";
       expect(EmailCalculator.computed.buttonUrl.call(localThis)).toBe(expected);
     });
   });
@@ -169,16 +169,16 @@ describe("EmailCalculator", () => {
   });
 
   it("buttonUrl builds the default URL with no products selected", () => {
-    let localThis = {
+    const localThis = {
       prices: prices,
       currency: "USD",
     };
-    let expected = "/apps";
+    const expected = "/apps";
     expect(EmailCalculator.computed.buttonUrl.call(localThis)).toBe(expected);
   });
 
   it("buttonUrl builds the correct URL with multiple products", () => {
-    let localThis = {
+    const localThis = {
       prices: prices,
       currency: "USD",
       rax_qty: 1,
@@ -186,7 +186,132 @@ describe("EmailCalculator", () => {
       office_qty: 3,
       arch: true,
     };
-    let expected = "/apps/combined/rax:1/hex:2/office:3/arch:true";
+    const expected = "/apps/combined/rax:1/hex:2/office:3/arch:true";
     expect(EmailCalculator.computed.buttonUrl.call(localThis)).toBe(expected);
+  });
+
+  it("setVal pushes the correct event into the dataLayer", () => {
+    // Setup.
+    window.dataLayer = [];
+    const localThis = {
+      prices: prices,
+      currency: "USD",
+      rax_qty: 1,
+      hex_qty: 2,
+      office_qty: 3,
+      arch: true,
+      rseplus: false,
+    };
+    // Rackspace Email Add
+    EmailCalculator.methods.setVal.call(localThis, "rax_qty", "add");
+    const expectedEventData = {
+      event: "ga.event",
+      eventCategory: "Rackspace Calculator",
+      eventAction: "Change Rackspace Email Mailbox Quantity",
+      eventLabel: "Add",
+      eventValue: 0,
+      eventNonInteraction: 0,
+    };
+    expect(window.dataLayer[0]).toEqual(expectedEventData);
+    // Rackspace Email Subtract
+    EmailCalculator.methods.setVal.call(localThis, "rax_qty", "subtract");
+    expectedEventData.eventLabel = "Subtract";
+    expect(window.dataLayer[1]).toEqual(expectedEventData);
+    // Rackspace Email Plus Add
+    localThis.rseplus = true;
+    EmailCalculator.methods.setVal.call(localThis, "rax_qty", "add");
+    expectedEventData.eventAction =
+      "Change Rackspace Email Plus Mailbox Quantity";
+    expectedEventData.eventLabel = "Add";
+    expect(window.dataLayer[2]).toEqual(expectedEventData);
+    // Hosted Exchange Add
+    EmailCalculator.methods.setVal.call(localThis, "hex_qty", "add");
+    expectedEventData.eventAction = "Change Hosted Exchange Mailbox Quantity";
+    expect(window.dataLayer[3]).toEqual(expectedEventData);
+    // Microsoft Office Add
+    EmailCalculator.methods.setVal.call(localThis, "office_qty", "add");
+    expectedEventData.eventAction = "Change Microsoft Office License Quantity";
+    expect(window.dataLayer[4]).toEqual(expectedEventData);
+  });
+
+  it("toggleEmailPlus pushes the correct event into the dataLayer", () => {
+    // Setup.
+    window.dataLayer = [];
+    const localThis = {
+      prices: prices,
+      currency: "USD",
+      rax_qty: 1,
+      hex_qty: 2,
+      office_qty: 3,
+      arch: false,
+      rseplus: false,
+    };
+    // Enable Email Plus
+    EmailCalculator.methods.toggleEmailPlus.call(localThis);
+    const expectedEventData = {
+      event: "ga.event",
+      eventCategory: "Rackspace Calculator",
+      eventAction: "Toggle Rackspace Email Plus",
+      eventLabel: "On",
+      eventValue: 0,
+      eventNonInteraction: 0,
+    };
+    expect(window.dataLayer[0]).toEqual(expectedEventData);
+    // Disable Email Plus
+    localThis.rseplus = true;
+    EmailCalculator.methods.toggleEmailPlus.call(localThis);
+    expectedEventData.eventLabel = "Off";
+    expect(window.dataLayer[1]).toEqual(expectedEventData);
+  });
+
+  it("toggleArchiving pushes the correct event into the dataLayer", () => {
+    // Setup.
+    window.dataLayer = [];
+    const localThis = {
+      prices: prices,
+      currency: "USD",
+      rax_qty: 1,
+      hex_qty: 2,
+      office_qty: 3,
+      arch: false,
+      rseplus: false,
+    };
+    // Enable Archiving
+    EmailCalculator.methods.toggleArchiving.call(localThis);
+    const expectedEventData = {
+      event: "ga.event",
+      eventCategory: "Rackspace Calculator",
+      eventAction: "Toggle Email Archiving",
+      eventLabel: "On",
+      eventValue: 0,
+      eventNonInteraction: 0,
+    };
+    expect(window.dataLayer[0]).toEqual(expectedEventData);
+    // Disable Archiving
+    localThis.arch = true;
+    EmailCalculator.methods.toggleArchiving.call(localThis);
+    expectedEventData.eventLabel = "Off";
+    expect(window.dataLayer[1]).toEqual(expectedEventData);
+  });
+
+  it("trackSignupButtonClick pushes the correct event into the dataLayer", () => {
+    // Setup.
+    window.dataLayer = [];
+    const localThis = {
+      prices: prices,
+      currency: "USD",
+      rax_qty: 1,
+      hex_qty: 2
+    };
+    EmailCalculator.methods.trackSignupButtonClick.call(localThis, "/apps/combined/rax:1/hex:2");
+    const expectedEventData = {
+      event: "ga.event",
+      eventCategory: "Rackspace Calculator",
+      eventAction: "Click Signup Button",
+      eventLabel: "/apps/combined/rax:1/hex:2",
+      eventValue: 0,
+      eventNonInteraction: 0,
+    };
+    expect(window.dataLayer[0]).toEqual(expectedEventData);
   });
 });
