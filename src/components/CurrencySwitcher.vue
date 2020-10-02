@@ -28,6 +28,7 @@
 import numberFormats from "@/numberFormats.json";
 import { loadLanguage } from "@/i18n";
 import { clickBus } from "./email/clickbus.js";
+import Analytics from "@/components/Analytics.js";
 
 export default {
   name: "CurrencySwitcher",
@@ -60,6 +61,7 @@ export default {
     updateCurrency(value) {
       this.$emit("input", value);
       this.showOptions = false;
+      Analytics.trackEvent("Rackspace Calculator", "Change Currency", value);
     },
   },
 };
