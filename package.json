@@ -7,29 +7,28 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'",
-    "postinstall": "vue-cli-service build"
+    "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'"
   },
   "dependencies": {
     "core-js": "^3.6.4",
-    "vue": "^2.6.11",
-    "vue-i18n": "^8.0.0"
+    "vue": "^2.6.12",
+    "vue-i18n": "^8.21.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.4.1",
-    "@vue/cli-plugin-eslint": "^4.2.3",
-    "@vue/cli-plugin-unit-jest": "^4.2.3",
-    "@vue/cli-service": "~4.4.1",
+    "@vue/cli-plugin-babel": "~4.5.6",
+    "@vue/cli-plugin-eslint": "^4.5.6",
+    "@vue/cli-plugin-unit-jest": "^4.5.6",
+    "@vue/cli-service": "~4.5.6",
     "@vue/eslint-config-prettier": "^6.0.0",
-    "@vue/test-utils": "1.0.3",
+    "@vue/test-utils": "^1.1.0",
     "babel-eslint": "^10.0.3",
-    "eslint": "^7.2.0",
+    "eslint": "^7.10.0",
     "eslint-plugin-prettier": "^3.1.1",
-    "eslint-plugin-vue": "^6.1.2",
+    "eslint-plugin-vue": "^7.0.0",
     "prettier": "^2.0.5",
     "vue-cli-plugin-drupal-pdb": "~0.1.0",
     "vue-cli-plugin-i18n": "^1.0.1",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.12"
   },
   "eslintConfig": {
     "root": true,
