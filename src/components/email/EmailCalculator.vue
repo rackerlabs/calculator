@@ -193,6 +193,7 @@
           name="next"
           :href="'https://cart.rackspace.com' + buttonUrl"
           @click="trackSignupButtonClick(buttonUrl)"
+          target="_blank"
           >{{ $t("Next Step") }}</a
         >
       </div>
@@ -338,8 +339,7 @@ export default {
 
 <style scoped>
 .email-calculator {
-  min-width: 400px;
-  width: 50%;
+  min-width: 350px;
 }
 .ec-totalBox {
   align-items: center;
