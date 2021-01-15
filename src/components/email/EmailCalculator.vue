@@ -7,7 +7,6 @@
         format="currency"
         class="ex-totalBox-total"
       ></i18n-n>
-      <span class="ec-totalBox-txt">{{ $t("Per Month") }}</span>
     </div>
     <div class="email-calculator-fields">
       <div class="email-currency-field">
@@ -22,29 +21,21 @@
             <img
               class="email-fieldCol-image-envelope"
               src="@/assets/new-email-icon.svg"
-              alt="Rackspace Email"
+              alt="VPC Logo"
             />
           </div>
           <div class="email-fieldCol-quantity">
             <div class="email-calculator-slimField">
-              <label for="rax_qty">{{ $t("Rackspace Email") }}</label>
+              <label for="rax_qty">{{ $t("Number of VPCs Needed") }}</label>
+              <ToolTip>
+                <ul>
+                  {{ $t("Please specify the number of VPCs you'll need total, including private and public.") }}
+                </ul>
+              </ToolTip>
             </div>
             <div
               class="email-calculator-slimField email-calculator-slimField-emailPlus"
             >
-              <label class="email-checkbox-container" for="rseplus">
-                <span class="email-checkbox-labelText">{{
-                  $t("Email Plus")
-                }}</span>
-                <input
-                  class="email-checkbox"
-                  id="rseplus"
-                  type="checkbox"
-                  v-model="rseplus"
-                  @click="toggleEmailPlus()"
-                />
-                <span class="email-checkbox-mark"></span>
-              </label>
             </div>
           </div>
         </div>
@@ -79,12 +70,12 @@
       >
         <div class="email-fieldCol-9">
           <div class="email-fieldCol-image">
-            <img src="@/assets/exchange.svg" alt="Hosted Exchange" />
+            <img src="" alt="AWS Routing Logo" />
           </div>
           <div
             class="email-fieldCol-quantity email-fieldCol-quantity-noCheckbox"
           >
-            <label for="hex_qty">{{ $t("Hosted Exchange") }}</label>
+            <label for="hex_qty">{{ $t("Custom Routes Needed") }}</label>
           </div>
         </div>
         <div class="email-fieldCol-3">
@@ -123,24 +114,10 @@
           <div
             class="email-fieldCol-quantity email-fieldCol-quantity-noCheckbox"
           >
-            <label for="office_qty">{{ $t("Microsoft Office") }}</label>
+            <label for="office_qty">{{ $t("VPN Solution Needed?") }}</label>
             <ToolTip>
               <ul>
-                <li>{{ $t("20% off Microsoft's Price") }}</li>
-                <li>
-                  {{
-                    $t(
-                      "Auto-updating online and desktop versions of Word, Excel, PowerPoint, Outlook"
-                    )
-                  }}
-                </li>
-                <li>
-                  {{
-                    $t(
-                      "1TB of OneDrive file storage - access & share files anywhere"
-                    )
-                  }}
-                </li>
+                {{ $t("If you need any VPN solution (site to site, site to cloud, etc.), please mark this as 'yes'") }}
               </ul>
             </ToolTip>
           </div>
@@ -171,21 +148,6 @@
         </div>
       </div>
       <div class="email-calculator-slimField">
-        <div class="email-fieldCol-6">
-          <label class="email-checkbox-container" for="arch">
-            <span class="email-checkbox-labelText">{{
-              $t("Email Archiving")
-            }}</span>
-            <input
-              class="email-checkbox"
-              id="arch"
-              type="checkbox"
-              v-model="arch"
-              @click="toggleArchiving()"
-            />
-            <span class="email-checkbox-mark"></span>
-          </label>
-        </div>
       </div>
       <div class="email-calculator-slimField">
         <a
@@ -207,7 +169,7 @@
 </template>
 
 <script>
-import prices from "@/prices/cloud_office.json";
+import prices from "@/prices/micro-projects_VPC_creation.json";
 import CurrencySwitcher from "@/components/CurrencySwitcher.vue";
 import ToolTip from "./tooltip.vue";
 import { clickBus } from "./clickbus.js";
@@ -248,11 +210,6 @@ export default {
     mailbox_qty() {
       return this.rax_qty + this.hex_qty;
     },
-    arch_total() {
-      const type = "app_email_archiving";
-      if (!this.arch) return 0;
-      return this.mailbox_qty * this.prices[type][this.currency];
-    },
     minimum_total() {
       const type = "app_minimum_total";
       return this.prices[type][this.currency];
@@ -280,10 +237,6 @@ export default {
       // Office
       if (this.office_qty) {
         url += "/office:" + this.office_qty;
-      }
-      // Archiving
-      if (this.arch) {
-        url += "/arch:true";
       }
       if (!url) return "/apps";
       return "/apps/combined" + url;
@@ -314,13 +267,6 @@ export default {
         "Rackspace Calculator",
         "Toggle Rackspace Email Plus",
         this.rseplus ? "Off" : "On"
-      );
-    },
-    toggleArchiving() {
-      Analytics.trackEvent(
-        "Rackspace Calculator",
-        "Toggle Email Archiving",
-        this.arch ? "Off" : "On"
       );
     },
     trackSignupButtonClick(buttonUrl) {

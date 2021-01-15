@@ -1,0 +1,206 @@
+{
+  "app_minimum_total": {
+    "AUD": 12.45,
+    "EUR": 11.4,
+    "GBP": 9.56,
+    "USD": 10
+  },
+  "app_email_archiving": {
+    "AUD": 3.8,
+    "EUR": 2.5,
+    "GBP": 1.84,
+    "USD": 3
+  },
+  "app_rackspace_email": {
+    "AUD": 4.15,
+    "EUR": 2.85,
+    "GBP": 2.39,
+    "USD": 2.99
+  },
+  "app_rackspace_email_plus": {
+    "AUD": 5.54,
+    "EUR": 3.8,
+    "GBP": 3.19,
+    "USD": 3.99
+  },
+  "app_rackspace_email_plus_add": {
+    "AUD": 9.34,
+    "EUR": 6.3,
+    "GBP": 5.03,
+    "USD": 6.99
+  },
+  "app_encrypted_exchange": {
+    "AUD": 13.3,
+    "EUR": 8.8,
+    "GBP": 7.25,
+    "USD": 10.5
+  },
+  "app_msft_azure_rights": {
+    "AUD": 3.8,
+    "EUR": 2.5,
+    "GBP": 2.1,
+    "USD": 3
+  },
+  "app_msft_business_onedrive": {
+    "AUD": 10.25,
+    "EUR": 6.75,
+    "GBP": 5.55,
+    "USD": 8
+  },
+  "app_msft_exchange": {
+    "AUD": 15.26,
+    "EUR": 10.47,
+    "GBP": 8.79,
+    "USD": 10.99
+  },
+  "app_msft_exchange_kiosk": {
+    "AUD": 3.8,
+    "EUR": 2.5,
+    "GBP": 2.1,
+    "USD": 3
+  },
+  "app_msft_sharepoint": {
+    "AUD": 10.25,
+    "EUR": 6.75,
+    "GBP": 5.55,
+    "USD": 8
+  },
+  "app_msft_skype": {
+    "AUD": 6.5,
+    "EUR": 4.2,
+    "GBP": 3.2,
+    "USD": 5
+  },
+  "m365_business": {
+    "AUD": 28.5,
+    "EUR": 19,
+    "GBP": 16.8,
+    "USD": 23
+  },
+  "m365_e3": {
+    "AUD": 48.9,
+    "EUR": 34.3,
+    "GBP": 30.4,
+    "USD": 37
+  },
+  "m365_e5": {
+    "AUD": 83.4,
+    "EUR": 59.7,
+    "GBP": 53.4,
+    "USD": 62.75
+  },
+  "o365_business_essential": {
+    "AUD": 10.2,
+    "EUR": 6.75,
+    "GBP": 6.25,
+    "USD": 8
+  },
+  "o365_business_office": {
+    "AUD": 11.5,
+    "EUR": 8,
+    "GBP": 7.8,
+    "USD": 8
+  },
+  "o365_business_premium": {
+    "AUD": 19,
+    "EUR": 12.5,
+    "GBP": 12.05,
+    "USD": 15
+  },
+  "o365_enterprise_e1": {
+    "AUD": 14,
+    "EUR": 9.25,
+    "GBP": 8.6,
+    "USD": 11
+  },
+  "o365_enterprise_e3": {
+    "AUD": 30.75,
+    "EUR": 22.5,
+    "GBP": 18.85,
+    "USD": 23
+  },
+  "o365_advanced_threat_protection": {
+    "AUD": 3.9,
+    "EUR": 2.6,
+    "GBP": 2.3,
+    "USD": 3
+  },
+  "o365_azure_information_protection": {
+    "AUD": 3.8,
+    "EUR": 2.5,
+    "GBP": 2.1,
+    "USD": 3
+  },
+  "o365_microsoft_business": {
+    "AUD": 28.5,
+    "EUR": 19,
+    "GBP": 16.8,
+    "USD": 22
+  },
+  "o365_microsoft_e3": {
+    "AUD": 48.9,
+    "EUR": 34.3,
+    "GBP": 30.4,
+    "USD": 37
+  },
+  "o365_extra_storage": {
+    "AUD": 0.26,
+    "EUR": 0.17,
+    "GBP": 0.2,
+    "USD": 0.2
+  },
+  "o365_proplus_office": {
+    "AUD": 16.5,
+    "EUR": 11.5,
+    "GBP": 11.4,
+    "USD": 11.5
+  },
+  "o365_exchange_essentials": {
+    "AUD": 7,
+    "EUR": 4.75,
+    "GBP": 4,
+    "USD": 5
+  },
+  "o365_exchange_online_1": {
+    "AUD": 9.5,
+    "EUR": 6.3,
+    "GBP": 5.15,
+    "USD": 7.5
+  },
+  "o365_exchange_online_2": {
+    "AUD": 14.1,
+    "EUR": 9.4,
+    "GBP": 8.4,
+    "USD": 11
+  },
+  "o365_email_archiving": {
+    "AUD": 3.8,
+    "EUR": 2.5,
+    "GBP": 1.84,
+    "USD": 3
+  },
+  "o365_adv_threat_p1": {
+    "AUD": 3.9,
+    "EUR": 2.6,
+    "GBP": 2.3,
+    "USD": 3
+  },
+  "o365_adv_threat_p2": {
+    "AUD": 11.9,
+    "EUR": 7.9,
+    "GBP": 7.1,
+    "USD": 9.33
+  },
+  "o365_power_bi": {
+    "AUD": 12.8,
+    "EUR": 8.5,
+    "GBP": 7.6,
+    "USD": 10
+  },
+  "o365_cloud_app_security": {
+    "AUD": 5.3,
+    "EUR": 3.6,
+    "GBP": 3.2,
+    "USD": 4.15
+  }
+}
