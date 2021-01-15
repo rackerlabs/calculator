@@ -10,7 +10,7 @@
     "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'"
   },
   "dependencies": {
-    "core-js": "^3.6.4",
+    "core-js": "^3.8.2",
     "vue": "^2.6.12",
     "vue-i18n": "^8.21.1"
   },
@@ -23,9 +23,9 @@
     "@vue/test-utils": "^1.1.0",
     "babel-eslint": "^10.0.3",
     "eslint": "^7.10.0",
-    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^7.0.0",
-    "prettier": "^2.0.5",
+    "prettier": "^2.2.1",
     "vue-cli-plugin-drupal-pdb": "~0.1.0",
     "vue-cli-plugin-i18n": "^1.0.1",
     "vue-template-compiler": "^2.6.12"

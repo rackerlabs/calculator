@@ -63,8 +63,8 @@ describe("CurrencySwitcher", () => {
   it("updateCurrency pushes the correct event into the dataLayer", async () => {
     const localThis = {
       $emit() {},
-      showOptions: false
-    }
+      showOptions: false,
+    };
     window.dataLayer = [];
     CurrencySwitcher.methods.updateCurrency.call(localThis, "USD");
     const expectedEventData = {
