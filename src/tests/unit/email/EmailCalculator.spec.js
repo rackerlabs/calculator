@@ -301,9 +301,12 @@ describe("EmailCalculator", () => {
       prices: prices,
       currency: "USD",
       rax_qty: 1,
-      hex_qty: 2
+      hex_qty: 2,
     };
-    EmailCalculator.methods.trackSignupButtonClick.call(localThis, "/apps/combined/rax:1/hex:2");
+    EmailCalculator.methods.trackSignupButtonClick.call(
+      localThis,
+      "/apps/combined/rax:1/hex:2"
+    );
     const expectedEventData = {
       event: "ga.event",
       eventCategory: "Rackspace Calculator",
