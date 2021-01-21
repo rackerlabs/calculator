@@ -1,15 +1,9 @@
 {
-  "app_minimum_total": {
-    "AUD": 12.45,
-    "EUR": 11.4,
-    "GBP": 9.56,
-    "USD": 10
-  },
-  "app_email_archiving": {
+  "create_VPC": {
     "AUD": 3.8,
     "EUR": 2.5,
     "GBP": 1.84,
-    "USD": 3
+    "USD": 50
   },
   "app_rackspace_email": {
     "AUD": 4.15,
