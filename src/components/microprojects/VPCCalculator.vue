@@ -1,46 +1,79 @@
 <template>
   <div class="vpccalculator">
+    <h2>{{ $t("VPC") }}</h2>
+
+    <label for="create_vpc_qty">{{ $t("Create VPC") }}</label>
     <input
-        type="number"
-        id="item_qty"
-        v-model.number="item_qty"
-      />
-            <span class="">{{ $t("Item Total") }}</span>
-      <i18n-n
-        :value="item_total"
-        format="currency"
-      ></i18n-n>
-    
+      type="number"
+      name="create_vpc_qty"
+      v-model.number="create_vpc_qty"
+    />
+    <span class="">{{ $t("Total") }}</span>
+    <i18n-n :value="create_vpc_total" format="currency"></i18n-n>
+
+    <br /><br />
+
+    <label for="custom_routes_qty">{{ $t("Custom Routes") }}</label>
+    <input
+      type="number"
+      name="custom_routes_qty"
+      v-model.number="custom_routes_qty"
+    />
+    <span class="">{{ $t("Total") }}</span>
+    <i18n-n :value="custom_routes_total" format="currency"></i18n-n>
+
+    <br /><br />
+
+    <label for="vpn_solution">{{ $t("VPN Solution") }}</label>
+    <input name="vpn_solution" type="checkbox" v-model="vpn_solution" />
+    <span class="">{{ $t("Total") }}</span>
+    <i18n-n :value="vpn_solution_total" format="currency"></i18n-n>
+
+    <br /><br />
+
+    <label for="custom_routes_qty">{{ $t("VPC Total") }}</label>
+    <i18n-n :value="vpc_total" format="currency"></i18n-n>
   </div>
 </template>
 
 <script>
-import prices from "@/prices/micro-projects_VPC.json";
+import prices from "@/prices/MicroProjects.json";
 
 export default {
   name: "VPCCalculator",
-  components: {
-    
-  },
+  components: {},
   data() {
     return {
       currency: "USD",
       prices: prices,
-      item_qty: 0,
+      create_vpc_qty: 0,
+      custom_routes_qty: 0,
+      vpn_solution: false,
     };
   },
   computed: {
-    item_total() {
-      const type = "app_rackspace_email";
-      return this.item_qty * this.prices[type][this.currency];
+    create_vpc_total() {
+      const type = "vpc-create_vpc";
+      return this.create_vpc_qty * this.prices[type][this.currency];
+    },
+    custom_routes_total() {
+      const type = "vpc-custom_routes";
+      return this.custom_routes_qty * this.prices[type][this.currency];
+    },
+    vpn_solution_total() {
+      const type = "vpc-vpn_solution";
+      return this.vpn_solution ? this.prices[type][this.currency] : 0;
+    },
+    vpc_total() {
+      return (
+        this.create_vpc_total +
+        this.custom_routes_total +
+        this.vpn_solution_total
+      );
     },
   },
-  methods: {
-    
-  },
+  methods: {},
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

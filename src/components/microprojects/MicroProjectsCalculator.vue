@@ -10,20 +10,14 @@ import VPCCalculator from "@/components/microprojects/VPCCalculator.vue";
 export default {
   name: "MicroProjectsCalculator",
   components: {
-    VPCCalculator
+    VPCCalculator,
   },
   data() {
-    return { };
+    return {};
   },
-  computed: {
-
-  },
-  methods: {
-    
-  },
+  computed: {},
+  methods: {},
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
