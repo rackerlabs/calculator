@@ -1,0 +1,17 @@
+name: MicroProjectsCalculator
+machine_name: microprojectscalculator
+type: pdb
+description: 'MicroProjectsCalculator pdb_vue block'
+package: Vue
+core: '8.x'
+module_status: active
+presentation: vue
+add_css:
+  header:
+    theme:
+      '../../dist/css/microprojectscalculator.css': {}
+add_js:
+  footer:
+    '../../dist/js/microprojectscalculator.js': { minified: true }
+libraries:
+  - rackspace/pdb_vue.common
