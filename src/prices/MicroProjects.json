@@ -1,5 +1,4 @@
 {
-  #VPC Creation
   "vpc-create_vpc": {
     "USD": 1000
   },
@@ -9,7 +8,6 @@
   "vpc-vpn_solution": {
     "USD": 1600
   },
-  #Database projects
   "database-migrate_db_to_rds": {
     "USD": 3200
   },
@@ -18,12 +16,10 @@
   },
   "database-replica": {
     "USD": 200
-    #database-replica is multiplied x database-migrate_db_to_rds
   },
   "database-100_gb_of_data": {
     "USD": 225
   },
-  #Instance projects
   "instance-create_instance_in_aws_with_sg": {
     "USD": 800
   },
@@ -36,7 +32,6 @@
   "instance-100_gb_of_data": {
     "USD": 225
   },
-  #Elasticache projects
   "elasticache-clusters": {
     "USD": 1000
   },
@@ -49,25 +44,18 @@
   "elasticache-100_gb_of_data": {
     "USD": 225
   },
-  #Control Tower Greenfield
   "control-tower-setup": {
     "USD": 2000
   },
   "control-tower-apply_standard_guardrails": {
     "USD": 500
   },
-  #Cost Optimization Projects
-  #This is a free form numerical field.  The cost of the project is the monthly cost savings potential multiplied by 2
-
-
-  #Workspaces Projects
   "workspaces-workspace_image": {
     "USD": 225
   },
   "workspaces-workspace": {
     "USD": 225
   },
-  #Active Directory projects
   "active-directory-ad_connector": {
     "USD": 225
   },
