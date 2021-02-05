@@ -17,7 +17,7 @@ import prices from "@/prices/MicroProjects.json";
 export default {
   name: "MicroProjectFeature",
   components: {},
-  props: ["label", "price_key"],
+  props: ["label", "price_key", "value"],
   data() {
     return {
       type: "qty",
@@ -29,7 +29,9 @@ export default {
   },
   computed: {
     mp_feature_total() {
-      return this.mp_feature_qty * this.prices[this.price_key][this.currency];
+      let value = this.mp_feature_qty * this.prices[this.price_key][this.currency];
+      this.$emit("input", value);
+      return value;
     },
   },
   methods: {},
