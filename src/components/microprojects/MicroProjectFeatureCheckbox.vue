@@ -1,10 +1,10 @@
 <template>
-  <div class="mpfeature">
+  <div class="mpfeaturecheckbox">
     <label for="mp_feature_qty">{{ $t(label) }}</label>
     <input
-      type="number"
-      name="mp_feature_qty"
-      v-model.number="mp_feature_qty"
+      name="mp_feature_checked"
+      type="checkbox"
+      v-model="mp_feature_checked"
     />
     <span class="">{{ $t("Total") }}</span>
     <i18n-n :value="mp_feature_total" format="currency"></i18n-n>
@@ -15,7 +15,7 @@
 import prices from "@/prices/MicroProjects.json";
 
 export default {
-  name: "MicroProjectFeature",
+  name: "MicroProjectFeatureCheckbox",
   components: {},
   props: {
     label: String,
@@ -26,13 +26,14 @@ export default {
     return {
       currency: "USD",
       prices: prices,
-      mp_feature_qty: 0,
+      mp_feature_checked: false,
     };
   },
   computed: {
     mp_feature_total() {
-      let value =
-        this.mp_feature_qty * this.prices[this.priceKey][this.currency];
+      let value = this.mp_feature_checked
+        ? this.prices[this.priceKey][this.currency]
+        : 0;
       this.$emit("input", value);
       return value;
     },
