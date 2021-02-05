@@ -2,6 +2,13 @@
   <div class="vpccalculator">
     <h2>{{ $t("VPC") }}</h2>
 
+    <MicroProjectFeature label="Create VPC" price_key="vpc-create_vpc" />
+    <br /><br />
+    <MicroProjectFeature label="Custom Routes" price_key="vpc-custom_routes" />
+    <br /><br />
+    <MicroProjectFeature label="VPN Solution" price_key="vpc-vpn_solution" />
+    <br /><br />
+
     <label for="create_vpc_qty">{{ $t("Create VPC") }}</label>
     <input
       type="number"
@@ -38,10 +45,13 @@
 
 <script>
 import prices from "@/prices/MicroProjects.json";
+import MicroProjectFeature from "./MicroProjectFeature.vue";
 
 export default {
   name: "VPCCalculator",
-  components: {},
+  components: {
+    MicroProjectFeature
+  },
   data() {
     return {
       currency: "USD",
