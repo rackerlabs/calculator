@@ -17,12 +17,12 @@
     <MicroProjectFeatureCheckbox
       label="Replication?"
       price-key="database-replica"
-      v-model="database-replica_total"
+      v-model="database_replica_total"
     />
     <MicroProjectFeature
       label="GB of Data (in chunks of 100)"
       price-key="database-100_gb_of_data"
-      v-model="database-100_gb_of_data_total"
+      v-model="database_100_gb_of_data_total"
     />
     <br /><br />
     <h3>{{ $t("Database Migrations Total") }}</h3>
@@ -47,8 +47,8 @@ export default {
       prices: prices,
       migrate_db_to_rds_total: 0,
       copy_rds_to_rds_total: 0,
-      database-replica_total: 0,
-      database-100_gb_of_data_total: 0,
+      database_replica_total: 0,
+      database_100_gb_of_data_total: 0,
     };
   },
   computed: {
@@ -56,8 +56,8 @@ export default {
       return (
         this.create_migrate_db_to_rds_total +
         this.copy_rds_to_rds_total +
-        this.database-replica_total +
-        this.database-100_gb_of_data_total
+        this.database_replica_total +
+        this.database_100_gb_of_data_total
       );
     },
   },

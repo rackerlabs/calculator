@@ -7,6 +7,7 @@
 <script>
 import MicroProjectsCalculator from "@/components/microprojects/MicroProjectsCalculator.vue";
 
+
 export default {
   name: "microprojectscalculator",
   components: {
@@ -23,6 +24,8 @@ export default {
   },
 };
 </script>
+
+
 <style media="screen">
 body {
   font-family: Arial;

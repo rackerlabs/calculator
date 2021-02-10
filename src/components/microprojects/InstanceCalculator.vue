@@ -22,7 +22,7 @@
     <MicroProjectFeature
       label="GB of Data (in chunks of 100)"
       price-key="instance-100_gb_of_data"
-      v-model="instance-100_gb_of_data_total"
+      v-model="instance_100_gb_of_data_total"
     />
     <br /><br />
     <h3>{{ $t("Instance Creation Total") }}</h3>
@@ -33,13 +33,11 @@
 <script>
 import prices from "@/prices/MicroProjects.json";
 import MicroProjectFeature from "./MicroProjectFeature.vue";
-import MicroProjectFeatureCheckbox from "./MicroProjectFeatureCheckbox.vue";
 
 export default {
   name: "InstanceCalculator",
   components: {
     MicroProjectFeature,
-    MicroProjectFeatureCheckbox,
   },
   data() {
     return {
@@ -48,7 +46,7 @@ export default {
       create_instance_in_aws_with_sg_total: 0,
       load_balancers_total: 0,
       applications_total: 0,
-      instance-100_gb_of_data_total: 0,
+      instance_100_gb_of_data_total: 0,
     };
   },
   computed: {
@@ -57,7 +55,7 @@ export default {
         this.create_instance_in_aws_with_sg_total +
         this.load_balancers_total +
         this.applications_total +
-        this.instance-100_gb_of_data_total
+        this.instance_100_gb_of_data_total
       );
     },
   },

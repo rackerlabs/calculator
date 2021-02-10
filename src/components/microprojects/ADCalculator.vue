@@ -5,7 +5,7 @@
     <MicroProjectFeature
       label="Active Directory Connector"
       price-key="active-directory-ad_connector"
-      v-model="ad-connector_total"
+      v-model="ad_connector_total"
     />
     <MicroProjectFeature
       label="Simple Active Directory"
@@ -21,28 +21,26 @@
 <script>
 import prices from "@/prices/MicroProjects.json";
 import MicroProjectFeature from "./MicroProjectFeature.vue";
-import MicroProjectFeatureCheckbox from "./MicroProjectFeatureCheckbox.vue";
 
 export default {
   name: "ADCalculator",
   components: {
     MicroProjectFeature,
-    MicroProjectFeatureCheckbox,
   },
   data() {
     return {
       currency: "USD",
       prices: prices,
-      ad-connector_total: 0,
+      ad_connector_total: 0,
       simple_ad_total: 0,
     };
   },
   computed: {
     database_total() {
       return (
-        this.ad-connector_total +
-        this.simple_ad_total +
-      );
+        this.ad_connector_total +
+        this.simple_ad_total
+        );
     },
   },
   methods: {},
