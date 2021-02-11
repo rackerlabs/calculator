@@ -50,7 +50,7 @@ export default {
     };
   },
   computed: {
-    database_total() {
+    instance_total() {
       return (
         this.create_instance_in_aws_with_sg_total +
         this.load_balancers_total +

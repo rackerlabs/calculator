@@ -10,7 +10,7 @@
     <MicroProjectFeature
       label="Workspaces"
       price-key="workspaces-workspace"
-      v-model="workspace_workspace_total"
+      v-model="workspaces_workspace_total"
     />
     <br /><br />
     <h3>{{ $t("Workspaces Total") }}</h3>
@@ -23,7 +23,7 @@ import prices from "@/prices/MicroProjects.json";
 import MicroProjectFeature from "./MicroProjectFeature.vue";
 
 export default {
-  name: "DatabaseCalculator",
+  name: "WorkspacesCalculator",
   components: {
     MicroProjectFeature,
   },
@@ -36,10 +36,10 @@ export default {
     };
   },
   computed: {
-    database_total() {
+    workspace_total() {
       return (
         this.workspace_images_total +
-        this.workspace_workspace_total
+        this.workspaces_workspace_total
       );
     },
   },

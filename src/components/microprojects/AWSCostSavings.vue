@@ -10,7 +10,7 @@
 
     <br /><br />
     <h3>{{ $t("AWS Cost Savings Total") }}</h3>
-    <i18n-n :value="cost-savings_total" format="currency"></i18n-n>
+    <i18n-n :value="cost_savings_total" format="currency"></i18n-n>
   </div>
 </template>
 
@@ -33,10 +33,8 @@ export default {
     };
   },
   computed: {
-    database_total() {
-      return (
-        this.create_migrate_db_to_rds_total +
-      );
+    cost_savings_total() {
+      return this.create_migrate_db_to_rds_total;
     },
   },
   methods: {},

@@ -54,7 +54,7 @@ export default {
   computed: {
     database_total() {
       return (
-        this.create_migrate_db_to_rds_total +
+        this.migrate_db_to_rds_total +
         this.copy_rds_to_rds_total +
         this.database_replica_total +
         this.database_100_gb_of_data_total

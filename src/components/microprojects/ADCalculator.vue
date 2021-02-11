@@ -36,7 +36,7 @@ export default {
     };
   },
   computed: {
-    database_total() {
+    active_directory_total() {
       return (
         this.ad_connector_total +
         this.simple_ad_total

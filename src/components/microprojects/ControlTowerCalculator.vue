@@ -39,7 +39,7 @@ export default {
     };
   },
   computed: {
-    database_total() {
+    control_tower_total() {
       return (
         this.control_tower_setup_total +
         this.control_tower_guardrails_total

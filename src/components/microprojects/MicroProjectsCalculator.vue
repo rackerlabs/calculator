@@ -3,8 +3,8 @@
     <VPCCalculator />
     <InstanceCalculator />
     <DatabaseCalculator />
-    <Workspaces />
-    <ControlTowerGreenfield />
+    <WorkspacesCalculator />
+    <ControlTowerCalculator />
   </div>
 </template>
 
@@ -12,8 +12,8 @@
 import VPCCalculator from "@/components/microprojects/VPCCalculator.vue";
 import InstanceCalculator from "@/components/microprojects/InstanceCalculator.vue";
 import DatabaseCalculator from "@/components/microprojects/DatabaseCalculator.vue";
-import Workspaces from "@/components/microprojects/Workspaces.vue";
-import ControlTowerGreenfield from "@/components/microprojects/ControlTowerGreenfield.vue";
+import WorkspacesCalculator from "@/components/microprojects/WorkspacesCalculator.vue";
+import ControlTowerCalculator from "@/components/microprojects/ControlTowerCalculator.vue";
 
 
 export default {
@@ -22,8 +22,8 @@ export default {
     VPCCalculator,
     InstanceCalculator,
     DatabaseCalculator,
-    Workspaces,
-    ControlTowerGreenfield,
+    WorkspacesCalculator,
+    ControlTowerCalculator,
   },
   data() {
     return {};
