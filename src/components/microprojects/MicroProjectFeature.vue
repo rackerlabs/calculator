@@ -5,6 +5,7 @@
       type="number"
       name="mp_feature_qty"
       v-model.number="mp_feature_qty"
+      min="0"
     />
     <span class="">{{ $t("Total") }}</span>
     <i18n-n :value="mp_feature_total" format="currency"></i18n-n>
