@@ -39,6 +39,9 @@ export default {
   components: {
     MicroProjectFeature,
   },
+  props: {
+    value: Number,
+  },
   data() {
     return {
       currency: "USD",
@@ -51,12 +54,12 @@ export default {
   },
   computed: {
     instance_total() {
-      return (
-        this.create_instance_in_aws_with_sg_total +
+      let value = this.create_instance_in_aws_with_sg_total +
         this.load_balancers_total +
         this.applications_total +
-        this.instance_100_gb_of_data_total
-      );
+        this.instance_100_gb_of_data_total;
+      this.$emit("input", value);
+      return value;
     },
   },
   methods: {},

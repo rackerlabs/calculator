@@ -27,6 +27,9 @@ export default {
   components: {
     MicroProjectFeature,
   },
+  props: {
+    value: Number,
+  },
   data() {
     return {
       currency: "USD",
@@ -37,10 +40,10 @@ export default {
   },
   computed: {
     workspace_total() {
-      return (
-        this.workspace_images_total +
-        this.workspaces_workspace_total
-      );
+      let value = this.workspace_images_total +
+        this.workspaces_workspace_total;
+      this.$emit("input", value);
+      return value;
     },
   },
   methods: {},

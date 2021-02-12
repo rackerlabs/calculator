@@ -30,6 +30,9 @@ export default {
   components: {
     MicroProjectFeatureCheckbox,
   },
+  props: {
+    value: Number,
+  },
   data() {
     return {
       currency: "USD",
@@ -40,10 +43,10 @@ export default {
   },
   computed: {
     control_tower_total() {
-      return (
-        this.control_tower_setup_total +
-        this.control_tower_guardrails_total
-      );
+      let value = this.control_tower_setup_total +
+        this.control_tower_guardrails_total;
+      this.$emit("input", value);
+      return value;
     },
   },
   methods: {},

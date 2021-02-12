@@ -36,6 +36,9 @@ export default {
     MicroProjectFeature,
     MicroProjectFeatureCheckbox,
   },
+  props: {
+    value: Number,
+  },
   data() {
     return {
       currency: "USD",
@@ -47,11 +50,11 @@ export default {
   },
   computed: {
     vpc_total() {
-      return (
-        this.create_vpc_total +
+      let value = this.create_vpc_total +
         this.custom_routes_total +
-        this.vpn_solution_total
-      );
+        this.vpn_solution_total;
+      this.$emit("input", value);
+      return value;
     },
   },
   methods: {},

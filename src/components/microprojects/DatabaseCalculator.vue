@@ -41,6 +41,9 @@ export default {
     MicroProjectFeature,
     MicroProjectFeatureCheckbox,
   },
+  props: {
+    value: Number,
+  },
   data() {
     return {
       currency: "USD",
@@ -53,12 +56,12 @@ export default {
   },
   computed: {
     database_total() {
-      return (
-        this.migrate_db_to_rds_total +
+      let value = this.migrate_db_to_rds_total +
         this.copy_rds_to_rds_total +
         this.database_replica_total +
-        this.database_100_gb_of_data_total
-      );
+        this.database_100_gb_of_data_total;
+      this.$emit("input", value);
+      return value;
     },
   },
   methods: {},
